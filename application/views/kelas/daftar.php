@@ -33,7 +33,9 @@
         vertical-align: middle !important;
     }
 </style>
-
+<?php
+echo $this->session->flashdata('pesan');
+?>
 <div class="row">
     <div class="container">
         <div class="col-md-12 mt-4 px-3">

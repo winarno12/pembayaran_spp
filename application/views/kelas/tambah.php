@@ -7,7 +7,7 @@
             <div class="card bg-transparent border-info ">
                 <div class="card-header bg-info">
                     <div class="row">
-                        <div class="col-md-11">
+                        <div class="col-md-11 h5">
                             Daftar
                         </div>
                         <div class="col-md-1 float-right">
@@ -21,17 +21,19 @@
                     <?= form_open() ?>
                     <div class="form-outline mb-4">
                         <label class="form-label" for="nama_kelas">Nama Kelas:</label>
-                        <input type="text" id="nama_kelas" class="form-control" name="nama_kelas" />
+                        <input type="text" id="nama_kelas" autocomplete="off" class="form-control" name="nama_kelas" />
+                        <?= form_error('nama_kelas', ' <small class="text-danger pl-3">', '</small>'); ?>
                     </div>
                     <!-- Email input -->
                     <div class="form-outline mb-4">
-                        <label class="form-label" for="kompetensi_keahlian">Email address</label>
-                        <input type="email" id="kompetensi_keahlian" name="kompetensi_keahlian" class="form-control" />
+                        <label class="form-label" for="kompetensi_keahlian">Kompetensi Keahlian:</label>
+                        <input type="text" autocomplete="off" id="kompetensi_keahlian" name="kompetensi_keahlian" class="form-control" />
+                        <?= form_error('kompetensi_keahlian', ' <small class="text-danger pl-3">', '</small>'); ?>
                     </div>
                     <div class="row text-end">
                         <div class="">
-                            <button class="btn btn-success">Simpan</button>
-                            <button class="btn btn-danger">Reset</button>
+                            <button type="submit" class="btn btn-success">Simpan</button>
+                            <button type="reset" class="btn btn-danger">Reset</button>
                         </div>
                     </div>
                     <?= form_close() ?>

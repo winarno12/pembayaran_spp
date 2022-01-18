@@ -9,4 +9,12 @@ class kelasModel extends CI_Model
         $query = $this->db->get()->result_array();
         return $query;
     }
+    public function insertdata($data)
+    {
+        if ($this->db->insert('kelas', $data)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
