@@ -16,6 +16,8 @@ class siswa extends CI_Controller
     }
     public function tambah_siswa()
     {
+        $data['kelas'] = create_double($this->siswaModel->getJurusan(), 'id_kelas', 'nama_kelas');
+        $data['spp'] =$this->siswaModel->getIdSpp();
         $data['content'] = 'siswa/tambah';
         $this->load->view('templates/main_view', $data);
     }

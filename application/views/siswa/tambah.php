@@ -27,28 +27,34 @@
                         <div class="col-md-6">
                             <div class="form-outline mb-4">
                                 <label class="form-label" for="nisn">NISN:</label>
-                                <input type="text" id="nisn" autocomplete="off" class="form-control" name="nisn" />
+                                <input type="number" id="nisn" autocomplete="off" class="form-control" name="nisn" />
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-outline mb-4">
                                 <label class="form-label" for="nis">NIS:</label>
-                                <input type="text" id="nis" autocomplete="off" class="form-control" name="nis" />
+                                <input type="number" id="nis" autocomplete="off" class="form-control" name="nis" />
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="form-outline mb-4">
-                            <label class="form-label" for="kelas">Kelas:</label>
-                            <?php echo form_dropdown('shirts', $options, 'large');
-                            ?>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-outline mb-4">
+                                <label class="form-label" for="kelas">Kelas:</label>
+                                <?php echo form_dropdown('category_id', $kelas, set_value('category_id'), 'id="book_category_id" class="form-control select2me" onChange="function_elements_add(this.name, this.value);" '); ?>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-outline mb-4">
+                                <label class="form-label" for="kelas">Kelas:</label>
+                                <?php echo form_dropdown('category_id', $spp, set_value('category_id'), 'id="book_category_id" class="form-control select2me" onChange="function_elements_add(this.name, this.value);" '); ?>
+                            </div>
                         </div>
                     </div>
                     <!-- Email input -->
                     <div class="form-outline mb-4">
                         <label class="form-label" for="kompetensi_keahlian">Kompetensi Keahlian:</label>
-                        <input type="text" autocomplete="off" id="kompetensi_keahlian" name="kompetensi_keahlian" class="form-control" />
-                        <?= form_error('kompetensi_keahlian', ' <small class="text-danger pl-3">', '</small>'); ?>
+                        <input type="number" autocomplete="off" id="no_telp" name="no_telp" class="form-control" />
                     </div>
                     <div class="row text-end">
                         <div class="">
