@@ -33,14 +33,14 @@
         vertical-align: middle !important;
     }
 </style>
-<?= $this->session->flashdata('pesan');
-?>
 <div class="row">
     <div class="container">
         <div class="col-md-12 mt-4 px-3">
             <h6 class="page-title h5">
                 Daftar Kelas <small class="text-success h7">Kelola Kelas</small>
             </h6>
+            <?= $this->session->flashdata('pesan');
+            ?>
 
             <div class="card bg-transparent border-info ">
                 <div class="card-header bg-info">
@@ -50,7 +50,7 @@
                         </div>
                         <div class="col-md-1 float-right">
                             <i class="">
-                                <a href="<?= base_url('kelas/tembah_kelas'); ?>" class="btn btn-outline-primary">Tambah</a>
+                                <a href="<?= base_url('kelas/tambah_kelas'); ?>" class="btn btn-outline-primary">Tambah</a>
                             </i>
                         </div>
                     </div>
@@ -80,8 +80,8 @@
                                         <td><?= $val['nama_kelas']; ?></td>
                                         <td><?= $val['kompetensi_keahlian']; ?></td>
                                         <td>
-                                            <a href="<?= base_url('kelas/hapus/'); ?><?= $val['id_kelas']; ?>" class="btn btn-danger">Hapus</a>
-                                            <a href="<?= base_url(); ?>" class="btn btn-primary">Ubah</a>
+                                            <a href="<?= base_url('kelas/hapus/'); ?><?= $val['id_kelas']; ?>" onclick="return confirm('yakin?')" class="btn btn-danger">Hapus</a>
+                                            <a href="<?= base_url('kelas/ubah_kelas/'); ?><?= $val['id_kelas']; ?>" class="btn btn-primary">Ubah</a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>

@@ -13,7 +13,7 @@ class kelas extends CI_Controller
         $data['content'] = 'kelas/daftar';
         $this->load->view('templates/main_view', $data);
     }
-    public function tembah_kelas()
+    public function tambah_kelas()
     {
         $this->form_validation->set_rules('nama_kelas', 'nama kelas', 'required|is_unique[kelas.nama_kelas]');
         $this->form_validation->set_rules('kompetensi_keahlian', 'kompetensi keahlian', 'required');
@@ -27,10 +27,10 @@ class kelas extends CI_Controller
     public function proses_add()
     {
         $data = [
-            'nama_kelas' => $this->input->post('nama_kelas'),
-            'kompetensi_keahlian' => $this->input->post('kompetensi_keahlian'),
-            'status' => 0,
-            'created_id' => $this->session->userdata('id_petugas')
+            'nama_kelas'            => $this->input->post('nama_kelas'),
+            'kompetensi_keahlian'   => $this->input->post('kompetensi_keahlian'),
+            'status'                => 0,
+            'created_id'            => $this->session->userdata('id_petugas')
         ];
         $this->kelasModel->insertdata($data);
         $this->session->set_flashdata('pesan', '<div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -43,13 +43,41 @@ class kelas extends CI_Controller
     public function hapus($id_kelas)
     {
         $data = [
-            'id_kelas' => $id_kelas,
-            'status' => 2,
-            'update_id' => $this->session->userdata('id_petugas'),
+            'id_kelas'          => $id_kelas,
+            'status'            => 2,
+            'update_id'         => $this->session->userdata('id_petugas'),
         ];
         $this->kelasModel->hapusdata($data);
         $this->session->set_flashdata('pesan', '<div class="alert alert-warning alert-dismissible fade show" role="alert">
         Data Kelas Berhasil Dihapus !
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>');
+        redirect('kelas');
+    }
+    public function ubah_kelas($id_kelas)
+    {
+        $data['kelas'] = $this->kelasModel->getkelasbyid($id_kelas);
+        $this->form_validation->set_rules('nama_kelas', 'nama kelas', 'required');
+        $this->form_validation->set_rules('kompetensi_keahlian', 'kompetensi keahlian', 'required');
+        if ($this->form_validation->run() == false) {
+            $data['content'] = 'kelas/ubah';
+            $this->load->view('templates/main_view', $data);
+        } else {
+            $this->proses_update();
+        }
+    }
+    public function proses_update()
+    {
+        $oldkelas = $this->input->post('old_kelas');
+        $data = [
+            'id_kelas'              => $this->input->post('id_kelas'),
+            'nama_kelas'            => $this->input->post('nama_kelas'),
+            'kompetensi_keahlian'   => $this->input->post('kompetensi_keahlian'),
+            'update_id'             => $this->session->userdata('id_petugas')
+        ];
+        $this->kelasModel->updatedata($data);
+        $this->session->set_flashdata('pesan', '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+        Data Kelas Berhasil Ditambahkan !
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>');
         redirect('kelas');
