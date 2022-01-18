@@ -6,25 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="<?= base_url('assets/css/bootstrap.css'); ?>">
-    <link href="<?= base_url() ?>assets/css/font-awesome.css" rel="stylesheet" />
-    <!-- css style -->
-    <link href="<?= base_url() ?>assets/css/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="<?= base_url('assets/css/bootstrap.min.css'); ?>">
+    <!-- data tables -->
+    <script type="text/javascript" src="<?= base_url('assets/DataTables/media/js/jquery.js'); ?>"></script>
+    <script type="text/javascript" src="<?= base_url('assets/DataTables/media/js/jquery.dataTables.js'); ?>"></script>
+    <link rel="stylesheet" type="text/css" href="<?= base_url('assets/DataTables/media/css/jquery.dataTables.css'); ?>">
+    <link rel="stylesheet" type="text/css" href="<?= base_url('assets/DataTables/media/css/dataTables.bootstrap.css'); ?>">
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.mytable').DataTable();
+        });
+    </script>
 </head>
 
 <body>
-    <section class="menu-section">
-        <div class="container">
-            <div class="row ">
-                <div class="col-md-12">
-                    <div class="navbar-collapse collapse ">
-                        <ul id="menu-top" class="nav navbar-nav navbar-right">
-                            <li><a href="<?= base_url('petugas'); ?>">Admin Login</a></li>
-                            <li><a href="<?= base_url('member'); ?>">User Login</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
