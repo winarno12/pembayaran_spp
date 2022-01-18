@@ -9,8 +9,8 @@ class kelas extends CI_Controller
     }
     public function index()
     {
-        $data['kelas'] = $this->kelasModel->getkelas();
-        $data['content'] = 'kelas/daftar';
+        $data['kelas']      = $this->kelasModel->getkelas();
+        $data['content']    = 'kelas/daftar';
         $this->load->view('templates/main_view', $data);
     }
     public function tambah_kelas()
@@ -56,11 +56,11 @@ class kelas extends CI_Controller
     }
     public function ubah_kelas($id_kelas)
     {
-        $data['kelas'] = $this->kelasModel->getkelasbyid($id_kelas);
+        $data['kelas']           = $this->kelasModel->getkelasbyid($id_kelas);
         $this->form_validation->set_rules('nama_kelas', 'nama kelas', 'required');
         $this->form_validation->set_rules('kompetensi_keahlian', 'kompetensi keahlian', 'required');
         if ($this->form_validation->run() == false) {
-            $data['content'] = 'kelas/ubah';
+            $data['content']    = 'kelas/ubah';
             $this->load->view('templates/main_view', $data);
         } else {
             $this->proses_update();
