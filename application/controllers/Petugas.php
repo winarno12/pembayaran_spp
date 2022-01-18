@@ -10,7 +10,11 @@ class Petugas extends CI_Controller
     {
         $this->form_validation->set_rules('username', 'username', 'required');
         $this->form_validation->set_rules('password', 'password', 'required');
-        $data['content'] = 'petugas/login';
-        $this->load->view('templates/main_view', $data);
+        if ($this->form_validation->run() == false) {
+            $data['content'] = 'petugas/login';
+            $this->load->view('templates/main_view', $data);
+        } else {
+            $this->proses_login();
+        }
     }
 }
