@@ -33,8 +33,7 @@
         vertical-align: middle !important;
     }
 </style>
-<?php
-echo $this->session->flashdata('pesan');
+<?= $this->session->flashdata('pesan');
 ?>
 <div class="row">
     <div class="container">
@@ -81,7 +80,7 @@ echo $this->session->flashdata('pesan');
                                         <td><?= $val['nama_kelas']; ?></td>
                                         <td><?= $val['kompetensi_keahlian']; ?></td>
                                         <td>
-                                            <a href="<?= base_url(); ?>" class="btn btn-danger">Hapus</a>
+                                            <a href="<?= base_url('kelas/hapus/'); ?><?= $val['id_kelas']; ?>" class="btn btn-danger">Hapus</a>
                                             <a href="<?= base_url(); ?>" class="btn btn-primary">Ubah</a>
                                         </td>
                                     </tr>

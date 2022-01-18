@@ -17,4 +17,15 @@ class kelasModel extends CI_Model
             return false;
         }
     }
+
+    public function hapusdata($data)
+    {
+        $this->db->where('id_kelas', $data['id_kelas']);
+        $query = $this->db->update('kelas', $data);
+        if ($query) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

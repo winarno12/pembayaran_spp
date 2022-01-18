@@ -33,10 +33,25 @@ class kelas extends CI_Controller
             'created_id' => $this->session->userdata('id_petugas')
         ];
         $this->kelasModel->insertdata($data);
-        redirect('kelas');
-        $this->session->set_flahdata('pesan', '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+        $this->session->set_flashdata('pesan', '<div class="alert alert-warning alert-dismissible fade show" role="alert">
         Data Kelas Berhasil Ditambahkan !
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>');
+        </div>');
+        redirect('kelas');
+    }
+
+    public function hapus($id_kelas)
+    {
+        $data = [
+            'id_kelas' => $id_kelas,
+            'status' => 2,
+            'update_id' => $this->session->userdata('id_petugas'),
+        ];
+        $this->kelasModel->hapusdata($data);
+        $this->session->set_flashdata('pesan', '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+        Data Kelas Berhasil Dihapus !
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>');
+        redirect('kelas');
     }
 }
