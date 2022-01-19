@@ -6,6 +6,7 @@ class kelasModel extends CI_Model
         $this->db->where('status', 0);
         $this->db->select('id_kelas,nama_kelas,kompetensi_keahlian');
         $this->db->from('kelas');
+        $this->db->order_by('nama_kelas', 'ACS');
         $query = $this->db->get()->result_array();
         return $query;
     }

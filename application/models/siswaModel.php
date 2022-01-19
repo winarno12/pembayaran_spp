@@ -8,6 +8,7 @@ class siswaModel extends CI_Model
         $this->db->join('spp', 'siswa.id_spp=spp.id_spp');
         $this->db->join('kelas', 'siswa.id_kelas=kelas.id_kelas');
         $this->db->where('siswa.status', 0);
+        $this->db->order_by('nama', 'ASC');
         $query = $this->db->get()->result_array();
         return $query;
     }

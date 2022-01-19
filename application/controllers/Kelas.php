@@ -57,14 +57,8 @@ class kelas extends CI_Controller
     public function ubah_kelas($id_kelas)
     {
         $data['kelas']           = $this->kelasModel->getkelasbyid($id_kelas);
-        $this->form_validation->set_rules('nama_kelas', 'nama kelas', 'required');
-        $this->form_validation->set_rules('kompetensi_keahlian', 'kompetensi keahlian', 'required');
-        if ($this->form_validation->run() == false) {
-            $data['content']    = 'kelas/ubah';
-            $this->load->view('templates/main_view', $data);
-        } else {
-            $this->proses_update();
-        }
+        $data['content']         = 'kelas/ubah';
+        $this->load->view('templates/main_view', $data);
     }
     public function proses_update()
     {
@@ -75,11 +69,22 @@ class kelas extends CI_Controller
             'kompetensi_keahlian'   => $this->input->post('kompetensi_keahlian'),
             'update_id'             => $this->session->userdata('id_petugas')
         ];
-        $this->kelasModel->updatedata($data);
-        $this->session->set_flashdata('pesan', '<div class="alert alert-warning alert-dismissible fade show" role="alert">
-        Data Kelas Berhasil Diubah !
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>');
-        redirect('kelas');
+        if ($oldkelas == $data['nama_kelas']) {
+            $this->form_validation->set_rules('nama_kelas', 'nama kelas', 'required');
+        } else {
+            $this->form_validation->set_rules('nama_kelas', 'nama kelas', 'required|is_unique[kelas.nama_kelas]');
+        }
+        if ($this->form_validation->run() == true) {
+            $this->kelasModel->updatedata($data);
+            $this->session->set_flashdata('pesan', '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+            Data Kelas Berhasil Diubah !
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>');
+            redirect('kelas');
+        } else {
+            $msg = validation_errors("<small class='text-danger pl-3'>", '</small>');
+            $this->session->set_flashdata('pesan', $msg);
+            redirect('kelas/ubah_kelas/' . $data['id_kelas']);
+        }
     }
 }

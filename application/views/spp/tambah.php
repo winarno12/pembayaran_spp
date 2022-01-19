@@ -2,7 +2,7 @@
     <div class="container">
         <div class="col-md-12 mt-4 px-3">
             <h6 class="page-title h5">
-                <small class="text-info h7">Ubah Kelas</small>
+                <small class="text-info h7">Tambah Kelas</small>
             </h6>
             <div class="card bg-transparent border-info ">
                 <div class="card-header bg-info">
@@ -18,18 +18,23 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <?= form_open('kelas/proses_update') ?>
-                    <input type="hidden" id="id_kelas" name="id_kelas" autocomplete="off" value="<?= $kelas['id_kelas']; ?>" class="form-control" />
-                    <input type="text" id="old_kelas" name="old_kelas" autocomplete="off" value="<?= $kelas['nama_kelas']; ?>" class="form-control" />
+                    <?= form_open() ?>
                     <div class="form-outline mb-4">
-                        <label class="form-label" for="nama_kelas">Nama Kelas:</label>
-                        <input type="text" id="nama_kelas" autocomplete="off" value="<?= $kelas['nama_kelas']; ?>" class="form-control" name="nama_kelas" />
-                        <?= $this->session->flashdata('pesan'); ?>
+                        <label class="form-label" for="tahun">Tahun</label>
+                        <select name="" id="">
+                            <?php $tahun_terbit = date('Y');
+                            var_dump($tahun_terbit);
+                            for ($i = $tahun_terbit - 1; $i <= $tahun_terbit +1; $i++) {
+                                echo " <option value=''>$i</option>";
+                            }
+                            ?>
+                        </select>
                     </div>
                     <!-- Email input -->
                     <div class="form-outline mb-4">
                         <label class="form-label" for="kompetensi_keahlian">Kompetensi Keahlian:</label>
-                        <input type="text" autocomplete="off" value="<?= $kelas['kompetensi_keahlian']; ?>" id="kompetensi_keahlian" name="kompetensi_keahlian" class="form-control" />
+                        <input type="text" autocomplete="off" id="kompetensi_keahlian" name="kompetensi_keahlian" class="form-control" />
+                        <?= form_error('kompetensi_keahlian', ' <small class="text-danger pl-3">', '</small>'); ?>
                     </div>
                     <div class="row text-end">
                         <div class="">
