@@ -12,7 +12,7 @@
                         </div>
                         <div class="col-md-1 float-right">
                             <i class="">
-                                <a href="<?= base_url('kelas'); ?>" class=" btn btn-outline-primary">kembali</a>
+                                <a href="<?= base_url('spp'); ?>" class=" btn btn-outline-primary">kembali</a>
                             </i>
                         </div>
                     </div>

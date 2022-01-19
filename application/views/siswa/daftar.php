@@ -72,7 +72,7 @@
                             <tbody>
                                 <?php if ($siswa == null) : ?>
                                     <tr>
-                                        <td colspan="4">Data Kelas Kosong</td>
+                                        <td colspan="7">Data Kelas Kosong</td>
                                     </tr>
                                 <?php else : ?>
                                     <?php $no = 1;

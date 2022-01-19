@@ -30,7 +30,8 @@ class spp extends CI_Controller
         $data = [
             'tahun'     => $this->input->post('tahun'),
             'nominal'   => uangtodb($this->input->post('nominal')),
-            'status'    => 0
+            'status'    => 0,
+            'created_id' => $this->session->userdata('id_petugas')
         ];
         $this->sppModel->insertData($data);
         $this->session->set_flashdata('pesan', '<div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -51,5 +52,20 @@ class spp extends CI_Controller
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>');
         redirect('spp');
+    }
+    public function ubahspp($id)
+    {
+        $data['spp']    = $this->sppModel->getSppById($id);
+        $this->form_validation->set_rules('tahun', 'Tahun', 'required');
+        $this->form_validation->set_rules('nominal', 'Nominal', 'required');
+        if ($this->form_validation->run() == false) {
+            $data['content']    = 'spp/ubah';
+            $this->load->view('templates/main_view', $data);
+        } else {
+            $this->proses_edit();
+        }
+    }
+    public function  proses_edit()
+    {
     }
 }

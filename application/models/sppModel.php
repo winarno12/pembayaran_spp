@@ -9,6 +9,10 @@ class sppModel extends CI_Model
         $query = $this->db->get()->result_array();
         return $query;
     }
+    public function getSppById($id_spp)
+    {
+        return $this->db->get_where('spp', ['id_spp' => $id_spp])->row_array();
+    }
     public function insertData($data)
     {
         if ($this->db->insert('spp', $data)) {
@@ -19,11 +23,11 @@ class sppModel extends CI_Model
     }
     public function hapusData($data)
     {
-        $this->db->where('id_spp',$data['id_spp']);
-        $query=$this->db->update('spp',$data);
+        $this->db->where('id_spp', $data['id_spp']);
+        $query = $this->db->update('spp', $data);
         if ($query) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
