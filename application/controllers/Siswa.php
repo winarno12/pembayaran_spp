@@ -17,8 +17,28 @@ class siswa extends CI_Controller
     public function tambah_siswa()
     {
         $data['kelas'] = create_double($this->siswaModel->getJurusan(), 'id_kelas', 'nama_kelas');
-        $data['spp'] =$this->siswaModel->getIdSpp();
-        $data['content'] = 'siswa/tambah';
-        $this->load->view('templates/main_view', $data);
+        $data['spp'] = $this->siswaModel->getIdSpp();
+        $this->form_validation->set_rules('nama_siswa', 'nama siswa', 'required');
+        $this->form_validation->set_rules('nisn', 'nisn', 'required|min_length[3]|max_length[3]');
+        if ($this->form_validation->run() == false) {
+            $data['content'] = 'siswa/tambah';
+            $this->load->view('templates/main_view', $data);
+        } else {
+            $this->processadd();
+        }
+    }
+
+    public function processadd()
+    {
+        $data = [
+            'nisn'          => $this->input->post('nisn'),
+            'nama_siswa'    => $this->input->post('nama_siswa'),
+            'id_kelas'      => $this->input->post('id_kelas'),
+            'alamat'        => $this->input->post('alamat'),
+            'no_telp'       => $this->input->post('no_telp'),
+            'id_spp'        => $this->input->post('id_spp'),
+            'status'        => 0
+        ];
+        var_dump($data);
     }
 }
