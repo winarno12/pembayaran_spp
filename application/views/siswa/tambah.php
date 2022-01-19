@@ -12,7 +12,7 @@
                         </div>
                         <div class="col-md-1 float-right">
                             <i class="">
-                                <a href="<?= base_url('kelas'); ?>" class=" btn btn-outline-primary">kembali</a>
+                                <a href="<?= base_url('siswa'); ?>" class=" btn btn-outline-primary">kembali</a>
                             </i>
                         </div>
                     </div>
@@ -35,7 +35,7 @@
                         <div class="col-md-6">
                             <div class="form-outline mb-4">
                                 <label class="form-label" for="nis">NIS:</label>
-                                <input type="number" id="nis" autocomplete="off" class="form-control" name="nis" />
+                                <input type="number" id="nis" value="<?= set_value('nis'); ?>" autocomplete="off" class="form-control" name="nis" />
                             </div>
                         </div>
                     </div>
@@ -43,7 +43,8 @@
                         <div class="col-md-6">
                             <div class="form-outline mb-4">
                                 <label class="form-label" for="kelas">Kelas:</label>
-                                <?php echo form_dropdown('category_id', $kelas, set_value('category_id'), 'id="book_category_id" class="form-control select2me" onChange="function_elements_add(this.name, this.value);" '); ?>
+                                <?php echo form_dropdown('id_kelas', $kelas, set_value('id_kelas'), 'id="id_kelas" class="form-control select2me" onChange="function_elements_add(this.name, this.value);" '); ?>
+                                <?= form_error('id_kelas', ' <small class="text-danger pl-3">', '</small>'); ?>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -51,20 +52,22 @@
                                 <label class="form-label" for="id_spp">SPP:</label>
                                 <select name="id_spp" class="form-control" id="id_spp">
                                     <?php foreach ($spp as $val) : ?>
-                                        <option value=""><?= $val['id_spp']; ?></option>
+                                        <option value="0" selected>Open this select menu</option>
+                                        <option value="<?= $val['id_spp']; ?>"><?= $val['id_spp']; ?></option>
                                     <?php endforeach; ?>
                                 </select>
+                                <?= form_error('id_spp', ' <small class="text-danger pl-3">', '</small>'); ?>
                             </div>
                         </div>
                     </div>
                     <!-- Email input -->
                     <div class="form-outline mb-4">
-                        <label class="form-label" for="kompetensi_keahlian">No Telp:</label>
-                        <input type="number" autocomplete="off" id="no_telp" name="no_telp" class="form-control" />
+                        <label class="form-label" for="no_telp">No Telp:</label>
+                        <input type="number" autocomplete="off" value="<?= set_value('no_telp'); ?>" id="no_telp" name="no_telp" class="form-control" />
                     </div>
                     <div class="form-outline mb-4">
-                        <label class="form-label" for="kompetensi_keahlian">Alamat:</label>
-                        <textarea name="alamat" id="alamat" cols="30" rows="10" class="form-control"></textarea>
+                        <label class="form-label" for="alamat">Alamat:</label>
+                        <textarea name="alamat" id="alamat" cols="30" rows="5" class="form-control"><?= set_value('alamat'); ?></textarea>
                     </div>
                     <div class="row text-end">
                         <div class="">

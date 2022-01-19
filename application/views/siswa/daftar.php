@@ -35,7 +35,7 @@
 </style>
 <div class="row">
     <div class="container">
-        <div class="col-md-12 mt-4 px-4">
+        <div class="col-md-12 col-lg-12 col-xl-12 mt-4 px-4">
             <h6 class="page-title h5">
                 Daftar Siswa <small class="text-success h7">Kelola Siswa</small>
             </h6>
@@ -56,44 +56,46 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <table class="table table-striped table-bordered table-hover table-full-width" id="myTable">
-                        <thead>
-                            <tr>
-                                <th>NO</th>
-                                <th>Nama</th>
-                                <th>NISN</th>
-                                <th>Kelas</th>
-                                <th>No Telp</th>
-                                <th>Nominal</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php if ($siswa == null) : ?>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered table-hover table-full-width" id="myTable">
+                            <thead>
                                 <tr>
-                                    <td colspan="4">Data Kelas Kosong</td>
+                                    <th>NO</th>
+                                    <th>Nama</th>
+                                    <th>NISN</th>
+                                    <th>Kelas</th>
+                                    <th>No Telp</th>
+                                    <th>Nominal</th>
+                                    <th>Aksi</th>
                                 </tr>
-                            <?php else : ?>
-                                <?php $no = 1;
-                                foreach ($siswa as $val) :
-
-                                ?>
+                            </thead>
+                            <tbody>
+                                <?php if ($siswa == null) : ?>
                                     <tr>
-                                        <td><?= $no++ ?></td>
-                                        <td><?= $val['nama']; ?></td>
-                                        <td><?= $val['nisn']; ?></td>
-                                        <td><?= $val['nama_kelas']; ?></td>
-                                        <td><?= $val['no_telp']; ?></td>
-                                        <td><?= konversi_uang($val['nominal']); ?></td>
-                                        <td>
-                                            <a href="<?= base_url('kelas/hapus/'); ?><?= $val['nisn']; ?>" onclick="return confirm('yakin?')" class="btn btn-danger">Hapus</a>
-                                            <a href="<?= base_url('kelas/ubah_kelas/'); ?><?= $val['nisn']; ?>" class="btn btn-primary">Ubah</a>
-                                        </td>
+                                        <td colspan="4">Data Kelas Kosong</td>
                                     </tr>
-                                <?php endforeach; ?>
-                            <?php endif; ?>
-                        </tbody>
-                    </table>
+                                <?php else : ?>
+                                    <?php $no = 1;
+                                    foreach ($siswa as $val) :
+
+                                    ?>
+                                        <tr>
+                                            <td><?= $no++ ?></td>
+                                            <td><?= $val['nama']; ?></td>
+                                            <td><?= $val['nisn']; ?></td>
+                                            <td><?= $val['nama_kelas']; ?></td>
+                                            <td><?= $val['no_telp']; ?></td>
+                                            <td><?= konversi_uang($val['nominal']); ?></td>
+                                            <td>
+                                                <a href="<?= base_url('siswa/hapussiswa/'); ?><?= $val['nisn']; ?>" onclick="return confirm('yakin?')" class="btn btn-danger">Hapus</a>
+                                                <a href="<?= base_url('kelas/ubah_kelas/'); ?><?= $val['nisn']; ?>" class="btn btn-primary">Ubah</a>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

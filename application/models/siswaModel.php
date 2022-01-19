@@ -25,7 +25,25 @@ class siswaModel extends CI_Model
         $this->db->select('spp.id_spp');
         $this->db->from('spp');
         $this->db->where('spp.status', 0);
-        $query = $this->db->get()->row('id_spp');
+        $query = $this->db->get()->result_array();
         return $query;
+    }
+    public  function insertdata($data)
+    {
+        if ($this->db->insert('siswa', $data)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public function hapusdata($data)
+    {
+        $this->db->where('nisn', $data['nisn']);
+        $query = $this->db->update('siswa', $data);
+        if ($query) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

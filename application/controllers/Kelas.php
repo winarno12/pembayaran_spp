@@ -77,7 +77,7 @@ class kelas extends CI_Controller
         ];
         $this->kelasModel->updatedata($data);
         $this->session->set_flashdata('pesan', '<div class="alert alert-warning alert-dismissible fade show" role="alert">
-        Data Kelas Berhasil Ditambahkan !
+        Data Kelas Berhasil Diubah !
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>');
         redirect('kelas');
