@@ -7,7 +7,7 @@ if (!function_exists('konversi_uang')) {
 				$a = 0;
 			}
 			$p 			= strlen($a);
-			$hasil 		= number_format($a, 2);
+			$hasil 		= number_format($a, 0);
 			return "Rp. " . $hasil;
 		}
 	}

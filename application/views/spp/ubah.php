@@ -20,12 +20,18 @@
                 <div class="card-body">
                     <?= form_open() ?>
                     <div class="form-outline mb-4">
+                        <input type="hidden" value="<?= $spp['id_spp']; ?>" name="id_spp">
                         <label class="form-label" for="tahun">Tahun</label>
                         <select class="form-select" name="tahun" aria-label="Default select example">
                             <option selected value="0">Open this select menu</option>
                             <?php $tahun_terbit = date('Y');
                             for ($i = $tahun_terbit - 1; $i <= $tahun_terbit + 1; $i++) {
-                                echo " <option value=$i>$i</option>";
+                                if ($spp['tahun'] == $i) {
+                                    # code...
+                                    echo " <option selected value=$i>$i</option>";
+                                } else {
+                                    echo " <option  value=$i>$i</option>";
+                                }
                             }
                             ?>
                         </select>
@@ -34,7 +40,7 @@
                     <!-- Email input -->
                     <div class="form-outline mb-4">
                         <label class="form-label" for="nominal">Nominal:</label>
-                        <input type="text" autocomplete="off" id="rupiah" name="nominal" class="form-control" />
+                        <input type="text" autocomplete="off" id="rupiah" name="nominal" value="<?= konversi_uang($spp['nominal']); ?>" class="form-control" />
                         <?= form_error('nominal', ' <small class="text-danger pl-3">', '</small>'); ?>
                     </div>
                     <div class="row text-end">

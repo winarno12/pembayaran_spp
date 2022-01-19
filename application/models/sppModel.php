@@ -31,4 +31,14 @@ class sppModel extends CI_Model
             return false;
         }
     }
+    public function ubahData($data)
+    {
+        $this->db->where('id_spp', $data['id_spp']);
+        $query = $this->db->update('spp', $data);
+        if ($query) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

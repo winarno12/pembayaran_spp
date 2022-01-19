@@ -82,7 +82,7 @@
                                             <td><?=konversi_uang($val['nominal']) ; ?></td>
                                             <td>
                                                 <a href="<?= base_url('spp/hapusspp/'); ?><?= $val['id_spp']; ?>" onclick="return confirm('yakin?')" class="btn btn-danger">Hapus</a>
-                                                <a href="<?= base_url('siswa/ubah_siswa/'); ?><?= $val['id_spp']; ?>" class="btn btn-primary">Ubah</a>
+                                                <a href="<?= base_url('spp/ubahspp/'); ?><?= $val['id_spp']; ?>" class="btn btn-primary">Ubah</a>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>

@@ -35,7 +35,7 @@ class spp extends CI_Controller
         ];
         $this->sppModel->insertData($data);
         $this->session->set_flashdata('pesan', '<div class="alert alert-warning alert-dismissible fade show" role="alert">
-        Data SPP Berhasil DiUbah!
+        Data SPP Berhasil Disimpan!
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>');
         redirect('spp');
@@ -67,5 +67,19 @@ class spp extends CI_Controller
     }
     public function  proses_edit()
     {
+        $data = [
+
+            'id_spp'     => $this->input->post('id_spp'),
+            'tahun'     => $this->input->post('tahun'),
+            'nominal'   => uangtodb($this->input->post('nominal')),
+            'status'    => 0,
+            'update_id' => $this->session->userdata('id_petugas')
+        ];
+        $this->sppModel->ubahData($data);
+        $this->session->set_flashdata('pesan', '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+        Data SPP Berhasil DiUbah!
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>');
+        redirect('spp');
     }
 }
