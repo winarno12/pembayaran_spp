@@ -34,7 +34,7 @@ class spp extends CI_Controller
             'created_id' => $this->session->userdata('id_petugas')
         ];
         $this->sppModel->insertData($data);
-        $this->session->set_flashdata('pesan', '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+        $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-dismissible fade show" role="alert">
         Data SPP Berhasil Disimpan!
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>');
@@ -47,7 +47,7 @@ class spp extends CI_Controller
             'status'    => 2
         ];
         $this->sppModel->hapusData($data);
-        $this->session->set_flashdata('pesan', '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+        $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
         Data SPP Berhasil Dihapus!
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>');

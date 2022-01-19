@@ -21,13 +21,13 @@
                     <?= form_open() ?>
                     <div class="form-outline mb-4">
                         <label class="form-label" for="nama_kelas">Nama Kelas:</label>
-                        <input type="text" id="nama_kelas" autocomplete="off" class="form-control" name="nama_kelas" />
+                        <input type="text" value="<?= set_value('nama_kelas'); ?>" id="nama_kelas" autocomplete="off" class="form-control" name="nama_kelas" />
                         <?= form_error('nama_kelas', ' <small class="text-danger pl-3">', '</small>'); ?>
                     </div>
                     <!-- Email input -->
                     <div class="form-outline mb-4">
                         <label class="form-label" for="kompetensi_keahlian">Kompetensi Keahlian:</label>
-                        <input type="text" autocomplete="off" id="kompetensi_keahlian" name="kompetensi_keahlian" class="form-control" />
+                        <input type="text" autocomplete="off" value="<?= set_value('kompetensi_keahlian'); ?>" id="kompetensi_keahlian" name="kompetensi_keahlian" class="form-control" />
                         <?= form_error('kompetensi_keahlian', ' <small class="text-danger pl-3">', '</small>'); ?>
                     </div>
                     <div class="row text-end">

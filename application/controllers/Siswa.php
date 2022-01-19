@@ -44,7 +44,7 @@ class siswa extends CI_Controller
             'created_id'    => $this->session->userdata('id_petugas')
         ];
         $this->siswaModel->insertdata($data);
-        $this->session->set_flashdata('pesan', '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+        $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-dismissible fade show" role="alert">
         Data siswa Berhasil Ditambahkan !
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>');
@@ -58,7 +58,7 @@ class siswa extends CI_Controller
             'update_id' => $this->session->userdata('id_petugas')
         ];
         $this->siswaModel->hapusdata($data);
-        $this->session->set_flashdata('pesan', '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+        $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
         Data siswa Berhasil Dihapus!
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>');

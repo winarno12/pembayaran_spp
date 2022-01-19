@@ -18,6 +18,7 @@ class siswaModel extends CI_Model
         $this->db->select('kelas.id_kelas,kelas.nama_kelas');
         $this->db->from('kelas');
         $this->db->where('kelas.status', 0);
+        $this->db->order_by('nama_kelas', 'ASC');
         $query = $this->db->get()->result_array();
         return $query;
     }
