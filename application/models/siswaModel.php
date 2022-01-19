@@ -46,6 +46,16 @@ class siswaModel extends CI_Model
             return false;
         }
     }
+    public function updateData($data)
+    {
+        $this->db->where('nisn', $data['nisn']);
+        $query = $this->db->update('siswa', $data);
+        if ($query) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     public function getSiswaByNisn($nisn)
     {
         return $this->db->get_where('siswa', ['nisn' => $nisn])->row_array();
