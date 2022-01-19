@@ -50,7 +50,7 @@
                         </div>
                         <div class="col-md-1 float-right">
                             <i class="">
-                                <a href="<?= base_url('spp/tambahspp'); ?>" class="btn btn-outline-primary">Tambah</a>
+                                <a href="<?= base_url('pembayaran/tambahpembayaran'); ?>" class="btn btn-outline-primary">Tambah</a>
                             </i>
                         </div>
                     </div>
