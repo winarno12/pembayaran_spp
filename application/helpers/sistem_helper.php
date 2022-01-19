@@ -23,3 +23,15 @@ if (!function_exists('create_double')) {
 		return $output;
 	}
 }
+if (!function_exists('uangtodb')) {
+	function uangtodb($a)
+	{
+		if (isset($a)) {
+			if ($a == '') {
+				$a = 0;
+			}
+			$p 			= preg_replace("/[^0-9]/", "", $a);
+			return $p;
+		}
+	}
+}

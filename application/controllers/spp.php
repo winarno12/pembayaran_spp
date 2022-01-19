@@ -6,6 +6,7 @@ class spp extends CI_Controller
         parent::__construct();
         $this->load->model('sppModel');
         $this->load->helper('sistem_helper');
+        $this->load->library('form_validation');
     }
     public function index()
     {
@@ -15,8 +16,40 @@ class spp extends CI_Controller
     }
     public function tambahspp()
     {
-        $data['content']    = 'spp/tambah';
-        $this->load->view('templates/main_view', $data);
-
+        $this->form_validation->set_rules('tahun', 'Tahun', 'required');
+        $this->form_validation->set_rules('nominal', 'Nominal', 'required');
+        if ($this->form_validation->run() == false) {
+            $data['content']    = 'spp/tambah';
+            $this->load->view('templates/main_view', $data);
+        } else {
+            $this->proses_add();
+        }
+    }
+    public function proses_add()
+    {
+        $data = [
+            'tahun'     => $this->input->post('tahun'),
+            'nominal'   => uangtodb($this->input->post('nominal')),
+            'status'    => 0
+        ];
+        $this->sppModel->insertData($data);
+        $this->session->set_flashdata('pesan', '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+        Data SPP Berhasil DiUbah!
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>');
+        redirect('spp');
+    }
+    public function hapusspp($id_spp)
+    {
+        $data = [
+            'id_spp'    => $id_spp,
+            'status'    => 2
+        ];
+        $this->sppModel->hapusData($data);
+        $this->session->set_flashdata('pesan', '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+        Data SPP Berhasil Dihapus!
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>');
+        redirect('spp');
     }
 }
