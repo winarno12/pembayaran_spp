@@ -46,4 +46,8 @@ class siswaModel extends CI_Model
             return false;
         }
     }
+    public function getSiswaByNisn($nisn)
+    {
+        return $this->db->get_where('siswa', ['nisn' => $nisn])->row_array();
+    }
 }

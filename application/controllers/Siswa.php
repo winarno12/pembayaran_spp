@@ -62,4 +62,12 @@ class siswa extends CI_Controller
         </div>');
         redirect('siswa');
     }
+    public function ubah_siswa($nisn)
+    {
+        $data['kelas']      = create_double($this->siswaModel->getJurusan(), 'id_kelas', 'nama_kelas');
+        $data['spp']        = $this->siswaModel->getIdSpp();
+        $data['siswa']      =$this->siswaModel->getSiswaByNisn($nisn);
+        $data['content']    = 'siswa/ubah';
+        $this->load->view('templates/main_view', $data);
+    }
 }
