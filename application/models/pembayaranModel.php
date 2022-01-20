@@ -11,4 +11,8 @@ class pembayaranModel extends CI_Model
         $query = $this->db->get()->result_array();
         return $query;
     }
+    public function getSiswaByID($nisn)
+    {
+        return $this->db->get_where('siswa', ['nisn' => $nisn])->row_array();
+    }
 }
