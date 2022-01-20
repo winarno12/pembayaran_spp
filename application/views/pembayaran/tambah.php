@@ -19,25 +19,13 @@
                 </div>
                 <div class="card-body">
                     <?= form_open() ?>
-                    <div class="form-outline mb-4">
-                        <label class="form-label" for="nama_kelas">Nama Siswa:</label>
-                        <?php echo form_dropdown('nisn', $siswa, set_value('nisn'), 'id="nisn" class="form-control select2me"'); ?>
-                    </div>
-                    <div class="form-outline mb-4">
-                        <label class="form-label" for="nama_kelas">Nama Kelas:</label>
-                        <input type="text" value="<?= set_value('nama_kelas'); ?>" id="nama_kelas" autocomplete="off" class="form-control" name="nama_kelas" />
-                        <?= form_error('nama_kelas', ' <small class="text-danger pl-3">', '</small>'); ?>
-                    </div>
-                    <!-- Email input -->
-                    <div class="form-outline mb-4">
-                        <label class="form-label" for="kompetensi_keahlian">Kompetensi Keahlian:</label>
-                        <input type="text" autocomplete="off" value="<?= set_value('kompetensi_keahlian'); ?>" id="kompetensi_keahlian" name="kompetensi_keahlian" class="form-control" />
-                        <?= form_error('kompetensi_keahlian', ' <small class="text-danger pl-3">', '</small>'); ?>
-                    </div>
-                    <div class="row text-end">
-                        <div class="">
-                            <button type="submit" class="btn btn-success">Simpan</button>
-                            <button type="reset" class="btn btn-danger">Reset</button>
+                    <label for="">Masukan NISN:</label>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="masukan NISN" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                        <div class="input-group-append">
+                            <button id="search-button" type="button" class="btn btn-primary">
+                                <i class="fas fa-search"></i>
+                            </button>
                         </div>
                     </div>
                     <?= form_close() ?>

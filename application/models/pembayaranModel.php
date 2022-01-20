@@ -11,12 +11,4 @@ class pembayaranModel extends CI_Model
         $query = $this->db->get()->result_array();
         return $query;
     }
-    public function getSiswa()
-    {
-        $this->db->select('nama,nisn');
-        $this->db->from('siswa');
-        $this->db->where('status', 0);
-        $query = $this->db->get()->result_array();
-        return $query;
-    }
 }

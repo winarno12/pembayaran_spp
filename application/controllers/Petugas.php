@@ -9,6 +9,9 @@ class Petugas extends CI_Controller
     }
     public function index()
     {
+        if ($this->session->userdata('id_petugas')) {
+            redirect('petugas/home');
+        }
         $this->form_validation->set_rules('username', 'username', 'required');
         $this->form_validation->set_rules('password', 'password', 'required');
         if ($this->form_validation->run() == false) {
