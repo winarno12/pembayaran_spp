@@ -28,16 +28,15 @@ class pembayaran extends CI_Controller
     {
         $nisn = $this->input->post('nisn');
         $data['siswa']          = $this->pembayaranModel->getSiswaByID($nisn);
-        var_dump($data);
         $data['content']        = 'pembayaran/tambah';
-        if ($data['siswa'] ==null) {
+        if ($data['siswa']) {
+            $this->load->view('templates/main_view', $data);
+        } else {
             $this->session->set_flashdata('pesan', '<div class="alert alert-warning alert-dismissible fade show" role="alert">
             Data Pembayaran Tidak ditemukan!
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>');
             redirect('pembayaran/tambahpembayaran');
-        } else {
-            $this->load->view('templates/main_view', $data);
         }
     }
 }

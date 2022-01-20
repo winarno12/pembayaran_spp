@@ -1,4 +1,3 @@
-<?= $siswa; ?>
 <div class="row">
     <div class="container">
         <div class="col-md-12 mt-4 px-3">
@@ -34,6 +33,14 @@
                     <?= form_close() ?>
                 </div>
             </div>
+            <?php if ($this->input->post('nisn')) : ?>
+                <table>
+                    <tr>
+                        <td><?= $siswa['nama']; ?></td>
+                    </tr>
+
+                </table>
+            <?php endif; ?>
         </div>
     </div>
 </div>
