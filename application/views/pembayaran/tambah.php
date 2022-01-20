@@ -1,5 +1,4 @@
 <div class="row">
-    <i class="fas fa-users"> </i>
     <div class="container">
         <div class="col-md-12 mt-4 px-3">
             <h6 class="page-title h5">
