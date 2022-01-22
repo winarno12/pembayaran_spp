@@ -4,6 +4,8 @@
             <h6 class="page-title h5">
                 <small class="text-info h7">Ubah Petugas</small>
             </h6>
+            <?= $this->session->userdata('pesan');
+            ?>
             <div class="card bg-transparent border-info ">
                 <div class="card-header bg-info">
                     <div class="row">
@@ -12,13 +14,15 @@
                         </div>
                         <div class="col-md-1 float-right">
                             <i class="">
-                                <a href="<?= base_url('petugas/home'); ?>" class=" btn btn-outline-primary">kembali</a>
+                                <a href="<?= base_url('petugas/tambah_petugas'); ?>" class=" btn btn-outline-primary">kembali</a>
                             </i>
                         </div>
                     </div>
                 </div>
                 <div class="card-body">
-                    <?= form_open() ?>
+                    <?= form_open('petugas/prosesubahpetugas') ?>
+                    <input type="text" value="<?= $petugas['username']; ?>" id="username" autocomplete="off" class="form-control" name="old_username" />
+                    <input type="text" value="<?= $petugas['id_petugas']; ?>" id="username" autocomplete="off" class="form-control" name="id_petugas" />
                     <div class="form-outline mb-4">
                         <label class="form-label" for="username">Username:</label>
                         <input type="text" value="<?= $petugas['level']; ?>" id="username" autocomplete="off" class="form-control" name="username" />
