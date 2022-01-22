@@ -21,4 +21,13 @@ class petugasModel extends CI_Model
             return false;
         }
     }
+    public function getPetugasByID($id)
+    {
+        $this->db->select('id_petugas,nama_petugas,username,level');
+        $this->db->from('petugas');
+        $this->db->where('status', 0);
+        $this->db->where('id_petugas', $id);
+        $query = $this->db->get()->row_array();
+        return $query;
+    }
 }

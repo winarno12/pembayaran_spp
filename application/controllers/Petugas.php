@@ -88,11 +88,14 @@ class Petugas extends CI_Controller
         Data Petugas Berhasil Ditambahkan!
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>');
-        redirect('petugas/home');
+        redirect('petugas/daftarPetugas');
     }
     public function ubahpetugas($id)
     {
-        $data['petugas']=$this->petugasModel->getPetugasByID($id);
+        $data['petugas'] = $this->petugasModel->getPetugasByID($id);
+        $data['level'] = ['admin', 'petugas'];
+        $data['content'] = 'petugas/ubah';
+        $this->load->view('templates/main_view', $data);
     }
     public function logout()
     {
