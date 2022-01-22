@@ -31,16 +31,26 @@
                     </div>
                     <?= form_error('nisn', ' <small class="text-danger pl-3">', '</small>'); ?>
                     <?= form_close() ?>
+                    <?php if ($this->input->post('nisn')) : ?>
+                        <?php var_dump($siswa) ?>
+                        <div class="row justify-content-center">
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-header">
+                                        DETAIL SISWA
+                                    </div>
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title"><?= $siswa['nama']; ?></h5>
+                                        <p class="card-text"><?= $siswa['nama_kelas']; ?></p>
+                                        <p class="card-text"><?= $siswa['nisn']; ?></p>
+                                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endif; ?>
                 </div>
             </div>
-            <?php if ($this->input->post('nisn')) : ?>
-                <table>
-                    <tr>
-                        <td><?= $siswa['nama']; ?></td>
-                    </tr>
-
-                </table>
-            <?php endif; ?>
         </div>
     </div>
 </div>
