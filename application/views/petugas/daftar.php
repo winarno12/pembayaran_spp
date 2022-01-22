@@ -50,7 +50,7 @@
                         </div>
                         <div class="col-md-1 float-right">
                             <i class="">
-                                <a href="<?= base_url('spp/tambahspp'); ?>" class="btn btn-outline-primary">Tambah</a>
+                                <a href="<?= base_url('petugas/tambah_petugas'); ?>" class="btn btn-outline-primary">Tambah</a>
                             </i>
                         </div>
                     </div>
@@ -61,8 +61,9 @@
                             <thead>
                                 <tr>
                                     <th>NO</th>
-                                    <th>Tahun</th>
-                                    <th>Nominal</th>
+                                    <th>Username</th>
+                                    <th>Nama Petugas</th>
+                                    <th>Level</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -78,11 +79,12 @@
                                     ?>
                                         <tr>
                                             <td><?= $no++ ?></td>
-                                            <td><?= $val['tahun']; ?></td>
-                                            <td><?=konversi_uang($val['nominal']) ; ?></td>
+                                            <td><?= $val['username']; ?></td>
+                                            <td><?= $val['nama_petugas']; ?></td>
+                                            <td><?= $val['level']; ?></td>
                                             <td>
-                                                <a href="<?= base_url('spp/hapusspp/'); ?><?= $val['id_spp']; ?>" onclick="return confirm('yakin?')" class="btn btn-danger">Hapus</a>
-                                                <a href="<?= base_url('spp/ubahspp/'); ?><?= $val['id_spp']; ?>" class="btn btn-primary">Ubah</a>
+                                                <a href="<?= base_url('petugas/hapuspetugas/'); ?><?= $val['id_petugas']; ?>" onclick="return confirm('yakin?')" class="btn btn-danger">Hapus</a>
+                                                <a href="<?= base_url('petugas/ubahpetugas/'); ?><?= $val['id_petugas']; ?>" class="btn btn-primary">Ubah</a>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>

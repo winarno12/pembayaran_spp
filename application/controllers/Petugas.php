@@ -55,6 +55,7 @@ class Petugas extends CI_Controller
     }
     public function daftarPetugas()
     {
+        $data['petugas'] = $this->petugasModel->getAllPetugas();
         $data['content'] = 'petugas/daftar';
         $this->load->view('templates/main_view', $data);
     }
@@ -88,6 +89,10 @@ class Petugas extends CI_Controller
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>');
         redirect('petugas/home');
+    }
+    public function ubahpetugas($id)
+    {
+        $data['petugas']=$this->petugasModel->getPetugasByID($id);
     }
     public function logout()
     {

@@ -7,7 +7,7 @@ class petugasModel extends CI_Model
     }
     public function getAllPetugas()
     {
-        $this->db->select('id_petugas,nama_petugas,username');
+        $this->db->select('id_petugas,nama_petugas,username,level');
         $this->db->from('petugas');
         $this->db->where('status', 0);
         $query = $this->db->get()->result_array();
