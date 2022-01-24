@@ -54,7 +54,7 @@
                         <div class="col-md-12">
                             <div class="form-outline mb-4">
                                 <label class="form-label" for="total_bayar">Jumlah Harus Diabayar:</label>
-                                <input type="text" name="total_bayar" value="" id="total_bayar" class="form-control">
+                                <input type="text" name="total_bayar" value="<?= konversi_uang($siswa['nominal']); ?>" id="total_bayar" class="form-control">
                             </div>
                         </div>
                     </div>
