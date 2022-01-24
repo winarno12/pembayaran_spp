@@ -14,9 +14,10 @@ class pembayaranModel extends CI_Model
     }
     public function getSiswaByID($nisn)
     {
-        $this->db->select('siswa.nama,kelas.nama_kelas,siswa.nisn');
+        $this->db->select('siswa.nama,kelas.nama_kelas,siswa.nisn,siswa.id_spp,spp.nominal');
         $this->db->from('siswa');
         $this->db->join('kelas', 'kelas.id_kelas=siswa.id_kelas');
+        $this->db->join('spp', 'siswa.id_spp=spp.id_spp');
         $this->db->where('siswa.status', 0);
         $this->db->where('siswa.nisn', $nisn);
         $query = $this->db->get()->row_array();

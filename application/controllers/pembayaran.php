@@ -10,7 +10,9 @@ class pembayaran extends CI_Controller
     }
     public function tambahPembayaran()
     {
-        $data['pembayaran']     = $this->pembayaranModel->getPembayaran();
+        $nisn = $this->session->userdata('nisn');
+        $data['siswa'] = $this->pembayaranModel->getSiswaByID($nisn);
+        var_dump($data);
         $data['content']        = 'pembayaran/tambah';
         $this->load->view('templates/main_view', $data);
     }
@@ -27,6 +29,7 @@ class pembayaran extends CI_Controller
     public function proses_search()
     {
         $nisn = $this->input->post('nisn');
+        $this->session->set_userdata('nisn', $nisn);
         $data['siswa']          = $this->pembayaranModel->getSiswaByID($nisn);
         $data['pembayaran']     = $this->pembayaranModel->getPembayaran($nisn);
         $data['content']        = 'pembayaran/daftar';
