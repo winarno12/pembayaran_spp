@@ -8,17 +8,17 @@ class pembayaran extends CI_Controller
         $this->load->helper('sistem_helper');
         $this->load->library('form_validation');
     }
-    public function index()
+    public function tambahPembayaran()
     {
         $data['pembayaran']     = $this->pembayaranModel->getPembayaran();
-        $data['content']        = 'pembayaran/daftar';
+        $data['content']        = 'pembayaran/tambah';
         $this->load->view('templates/main_view', $data);
     }
-    public function tambahpembayaran()
+    public function index()
     {
         $this->form_validation->set_rules('nisn', 'NISN', 'required');
         if ($this->form_validation->run() == false) {
-            $data['content']        = 'pembayaran/tambah';
+            $data['content']        = 'pembayaran/daftar';
             $this->load->view('templates/main_view', $data);
         } else {
             $this->proses_search();
@@ -28,7 +28,8 @@ class pembayaran extends CI_Controller
     {
         $nisn = $this->input->post('nisn');
         $data['siswa']          = $this->pembayaranModel->getSiswaByID($nisn);
-        $data['content']        = 'pembayaran/tambah';
+        $data['pembayaran']     = $this->pembayaranModel->getPembayaran($nisn);
+        $data['content']        = 'pembayaran/daftar';
         if ($data['siswa']) {
             $this->load->view('templates/main_view', $data);
         } else {
@@ -36,7 +37,7 @@ class pembayaran extends CI_Controller
             Data Siswa Tidak ditemukan!
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>');
-            redirect('pembayaran/tambahpembayaran');
+            redirect('pembayaran');
         }
     }
 }

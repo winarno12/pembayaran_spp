@@ -1,99 +1,94 @@
-<style>
-    th {
-        font-size: 14px !important;
-        font-weight: bold !important;
-        text-align: center !important;
-        margin: 0 auto;
-        vertical-align: middle !important;
-    }
-
-    td {
-        font-size: 12px !important;
-        font-weight: normal !important;
-        text-align: center !important;
-    }
-
-    select {
-        display: inline-block;
-        padding: 4px 6px;
-        margin-bottom: 0px !important;
-        font-size: 14px;
-        line-height: 20px;
-        color: #555555;
-        -webkit-border-radius: 3px;
-        -moz-border-radius: 3px;
-        border-radius: 3px;
-    }
-
-    label {
-        display: inline !important;
-        width: 50% !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        vertical-align: middle !important;
-    }
-</style>
 <div class="row">
     <div class="container">
-        <div class="col-md-12 col-lg-12 col-xl-12 mt-4 px-4">
+        <div class="col-md-12 mt-4 px-3">
+            <?= $this->session->flashdata('pesan'); ?>
             <h6 class="page-title h5">
-                Daftar SPP <small class="text-success h7">Kelola SPP</small>
+                <small class="text-info h7">Tambah Kelas</small>
             </h6>
-            <?= $this->session->flashdata('pesan');
-            ?>
-
             <div class="card bg-transparent border-info ">
                 <div class="card-header bg-info">
                     <div class="row">
-                        <div class="col-md-11">
+                        <div class="col-md-11 h5">
                             Daftar
                         </div>
                         <div class="col-md-1 float-right">
                             <i class="">
-                                <a href="<?= base_url('pembayaran/tambahpembayaran'); ?>" class="btn btn-outline-primary">Tambah</a>
+                                <a href="<?= base_url('kelas'); ?>" class=" btn btn-outline-primary">kembali</a>
                             </i>
                         </div>
                     </div>
                 </div>
                 <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-striped table-bordered table-hover table-full-width" id="myTable">
-                            <thead>
-                                <tr>
-                                    <th>NO</th>
-                                    <th>Nama Siswa</th>
-                                    <th>Tanggal / Bulan</th>
-                                    <th>Tahun</th>
-                                    <th>Total Bayar</th>
-                                    <th>Aksi</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php if ($pembayaran == null) : ?>
-                                    <tr>
-                                        <td colspan="6">Data Kelas Kosong</td>
-                                    </tr>
-                                <?php else : ?>
-                                    <?php $no = 1;
-                                    foreach ($pembayaran as $val) :
-
-                                    ?>
-                                        <tr>
-                                            <td><?= $no++ ?></td>
-                                            <td><?= $val['tahun']; ?></td>
-                                            <td><?= konversi_uang($val['nominal']); ?></td>
-                                            <td>
-                                                <a href="<?= base_url('spp/hapusspp/'); ?><?= $val['id_spp']; ?>" onclick="return confirm('yakin?')" class="btn btn-danger">Hapus</a>
-                                                <a href="<?= base_url('spp/ubahspp/'); ?><?= $val['id_spp']; ?>" class="btn btn-primary">Ubah</a>
-                                            </td>
-                                        </tr>
-                                    <?php endforeach; ?>
-                                <?php endif; ?>
-                            </tbody>
-                        </table>
+                    <?= form_open() ?>
+                    <label for="">Masukan NISN:</label>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="masukan NISN" aria-label="Recipient's username" aria-describedby="basic-addon2" autocomplete="off" name="nisn">
+                        <div class="input-group-append">
+                            <button id="search-button" type="submit" class="btn btn-primary">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
                     </div>
+                    <?= form_error('nisn', ' <small class="text-danger pl-3">', '</small>'); ?>
+                    <?= form_close() ?>
+                    <?php if ($this->input->post('nisn')) : ?>
+                        <div class="row justify-content-center">
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-header">
+                                        DETAIL SISWA
+                                    </div>
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title"><?= $siswa['nama']; ?></h5>
+                                        <p class="card-text"><?= $siswa['nama_kelas']; ?></p>
+                                        <p class="card-text"><?= $siswa['nisn']; ?></p>
+                                        <a href="<?=base_url('pembayaran/tambahPembayaran')  ;?>" class="btn btn-primary">Tambah</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="table-responsive px-2">
+                    <table class="table table-striped table-bordered table-hover table-full-width" id="myTable">
+                        <thead>
+                            <tr>
+                                <th>NO</th>
+                                <th>Nama Siswa</th>
+                                <th>Kelas</th>
+                                <th>Tanggal / Bulan</th>
+                                <th>Total Bayar</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php if ($pembayaran == null) : ?>
+                                <tr>
+                                    <td colspan="6">Siswa</td>
+                                </tr>
+                            <?php else : ?>
+                                <?php $no = 1;
+                                foreach ($pembayaran as $val) :
+
+                                ?>
+                                    <tr>
+                                        <td><?= $no++ ?></td>
+                                        <td><?= $val['nama']; ?></td>
+                                        <td><?= $val['nama_kelas']; ?></td>
+                                        <td><?= $val['bulan_dibayar']; ?></td>
+                                        <td><?= $val['total_bayar']; ?></td>
+                                        <td>
+                                            <a href="<?= base_url('spp/hapusspp/'); ?><?= $val['id_spp']; ?>" onclick="return confirm('yakin?')" class="btn btn-danger">Hapus</a>
+                                            <a href="<?= base_url('spp/ubahspp/'); ?><?= $val['id_spp']; ?>" class="btn btn-primary">Ubah</a>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
+                        </tbody>
+                    </table>
+
                 </div>
             </div>
         </div>
+
+    <?php endif; ?>
     </div>
-</div>
