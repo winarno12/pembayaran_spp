@@ -23,14 +23,16 @@
                     <li class="nav-item">
                         <a class="nav-link" href="<?= base_url('petugas/home'); ?>">Home</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Data Master</a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="<?= base_url('kelas'); ?>">Kelas</a></li>
-                            <li><a class="dropdown-item" href="<?= base_url('spp'); ?>">SPP</a></li>
-                            <li><a class="dropdown-item" href="<?= base_url('siswa'); ?>">Siswa</a></li>
-                        </ul>
-                    </li>
+                    <?php if ($this->session->userdata('level') == 'admin') : ?>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Data Master</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="<?= base_url('kelas'); ?>">Kelas</a></li>
+                                <li><a class="dropdown-item" href="<?= base_url('spp'); ?>">SPP</a></li>
+                                <li><a class="dropdown-item" href="<?= base_url('siswa'); ?>">Siswa</a></li>
+                            </ul>
+                        </li>
+                    <?php endif; ?>
                     <li class="nav-item">
                         <a class="nav-link" href="<?= base_url('pembayaran'); ?>">Pembayaran</a>
                     </li>

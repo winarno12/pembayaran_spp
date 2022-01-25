@@ -20,7 +20,7 @@
                     <div class="navbar-collapse collapse ">
                         <ul id="menu-top" class="nav navbar-nav navbar-right">
                             <li><a href="<?= base_url('petugas'); ?>">Admin Login</a></li>
-                            <li><a href="<?= base_url('member'); ?>">User Login</a></li>
+                            <li><a href="<?= base_url('siswa/login'); ?>">User Login</a></li>
                         </ul>
                     </div>
                 </div>

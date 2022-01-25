@@ -100,4 +100,8 @@ class siswa extends CI_Controller
         </div>');
         redirect('siswa');
     }
+    public function login()
+    {
+        $this->load->view('login');
+    }
 }
