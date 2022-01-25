@@ -57,13 +57,12 @@
                                 <th>Kelas</th>
                                 <th>Tanggal / Bulan</th>
                                 <th>Total Bayar</th>
-                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php if ($pembayaran == null) : ?>
                                 <tr>
-                                    <td colspan="6">Siswa</td>
+                                    <td colspan="5">Siswa</td>
                                 </tr>
                             <?php else : ?>
                                 <?php $no = 1;
@@ -74,12 +73,8 @@
                                         <td><?= $no++ ?></td>
                                         <td><?= $val['nama']; ?></td>
                                         <td><?= $val['nama_kelas']; ?></td>
-                                        <td><?= $val['bulan_dibayar']; ?></td>
-                                        <td><?= $val['total_bayar']; ?></td>
-                                        <td>
-                                            <a href="<?= base_url('spp/hapusspp/'); ?><?= $val['id_spp']; ?>" onclick="return confirm('yakin?')" class="btn btn-danger">Hapus</a>
-                                            <a href="<?= base_url('spp/ubahspp/'); ?><?= $val['id_spp']; ?>" class="btn btn-primary">Ubah</a>
-                                        </td>
+                                        <td><?= $val['bulan_dibayar']; ?>/<?=$val['tahun_dibayar'] ;?></td>
+                                        <td><?=konversi_uang($val['jumlah_bayar']) ; ?></td>
                                     </tr>
                                 <?php endforeach; ?>
                             <?php endif; ?>

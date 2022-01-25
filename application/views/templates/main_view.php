@@ -5,8 +5,7 @@ if ($this->session->userdata('id_petugas') == true) :
 ?>
 
 
-
-    <div class="page-content-wrapper">
+<div class="page-content-wrapper">
         <!-- BEGIN CONTENT BODY -->
         <div class="page-content">
             <!-- view -->
