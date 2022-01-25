@@ -48,6 +48,13 @@
         }
     </style>
     <div class="row">
+        <div class="text-end">
+            <p>Selamat Datang</p>
+            <a href="#" class="">
+                <span class="px-3"></span> Log out
+            </a>
+            </p>
+        </div>
         <div class="container">
             <div class="col-md-12 col-lg-12 col-xl-12 mt-4 px-4">
                 <h6 class="page-title h5">
@@ -81,7 +88,6 @@
                                     <?php else : ?>
                                         <?php $no = 1;
                                         foreach ($pembayaran as $val) :
-
                                         ?>
                                             <tr>
                                                 <td><?= $no++ ?></td>

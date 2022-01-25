@@ -131,6 +131,6 @@ class siswa extends CI_Controller
     {
         $nisn               = $this->session->userdata('nisn');
         $data['pembayaran'] = $this->siswaModel->getSppSiswa($nisn);
-        $this->load->view('siswa/riwayat_spp',$data);
+        $this->load->view('siswa/riwayat_spp', $data);
     }
 }
