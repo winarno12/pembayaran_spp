@@ -33,7 +33,7 @@
         <div class="container">
             <div class="row pad-botm">
                 <div class="col-md-12">
-                    <h4 class="header-line">ADMIN LOGIN FORM</h4>
+                    <h4 class="header-line">SISWA LOGIN FORM</h4>
                     <div class="row">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                             <?= form_open(); ?>
@@ -43,14 +43,9 @@
                                 </div>
                                 <div class="panel-body">
                                     <div class="form-group">
-                                        <label>Username</label>
-                                        <input class="form-control" type="" name="username" autocomplete="off" value="" />
-                                        <?= form_error('username', ' <small class="text-danger pl-3">', '</small>'); ?>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Password</label>
-                                        <input class="form-control" type="password" name="password" autocomplete="off" />
-                                        <?= form_error('password', ' <small class="text-danger pl-3">', '</small>'); ?>
+                                        <label>NISN:</label>
+                                        <input class="form-control" type="" name="nisn" autocomplete="off" value="" />
+                                        <?= form_error('nisn', ' <small class="text-danger pl-3">', '</small>'); ?>
                                     </div>
                                     <button type="submit" class="btn btn-info">Login</button>
                                 </div>
@@ -68,4 +63,5 @@
 <!-- BOOTSTRAP SCRIPTS  -->
 <script src="<?= base_url('assets/js/bootstrap.min.js'); ?> "></script>
 <!-- CUSTOM SCRIPTS  -->
+
 </html>

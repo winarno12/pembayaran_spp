@@ -102,6 +102,35 @@ class siswa extends CI_Controller
     }
     public function login()
     {
-        $this->load->view('login');
+        $this->form_validation->set_rules('nisn', 'NISN', 'required');
+        if ($this->form_validation->run() == false) {
+            # code...
+            $this->load->view('siswa/login');
+        } else {
+            $this->proseslogin();
+        }
+    }
+    public function proseslogin()
+    {
+        $data = [
+            'nisn' => $this->input->post('nisn')
+        ];
+        $auth = $this->db->get_where('siswa', ['nisn' => $data['nisn']])->row('nisn');
+        if ($data['nisn'] == $auth) {
+            $this->session->set_userdata('nisn', $auth);
+            redirect('siswa/home');
+        } else {
+            $this->session->set_flashdata('pesan', '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+            Data siswa Tidak Ditemukan!
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>');
+            redirect('siswa/login');
+        }
+    }
+    public function home()
+    {
+        $nisn               = $this->session->userdata('nisn');
+        $data['pembayaran'] = $this->siswaModel->getSppSiswa($nisn);
+        $this->load->view('siswa/riwayat_spp',$data);
     }
 }
