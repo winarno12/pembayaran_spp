@@ -30,6 +30,7 @@
                                 <li><a class="dropdown-item" href="<?= base_url('kelas'); ?>">Kelas</a></li>
                                 <li><a class="dropdown-item" href="<?= base_url('spp'); ?>">SPP</a></li>
                                 <li><a class="dropdown-item" href="<?= base_url('siswa'); ?>">Siswa</a></li>
+                                <li><a class="dropdown-item" href="<?= base_url('petugas/daftarPetugas'); ?>">Petugas</a></li>
                             </ul>
                         </li>
                     <?php endif; ?>

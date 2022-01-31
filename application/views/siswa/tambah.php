@@ -1,6 +1,12 @@
 <div class="row">
     <div class="container">
         <div class="col-md-12 mt-4 px-3">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="<?= base_url('siswa'); ?>">Daftar Siswa</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Tambah Siswa</li>
+                </ol>
+            </nav>
             <h6 class="page-title h5">
                 <small class="text-info h7">Tambah Siswa</small>
             </h6>

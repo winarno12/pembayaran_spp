@@ -7,10 +7,6 @@ class siswa extends CI_Controller
         $this->load->model('siswaModel');
         $this->load->library('form_validation');
         $this->load->helper('sistem_helper');
-        // pembatasan administrator dan petugas
-        if ($this->session->userdata('level') == 'petugas') {
-            redirect('petugas');
-        }
     }
     public function index()
     {

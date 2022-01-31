@@ -6,6 +6,7 @@ class Petugas extends CI_Controller
         parent::__construct();
         $this->load->library('form_validation');
         $this->load->model('petugasModel');
+        
     }
     public function index()
     {
