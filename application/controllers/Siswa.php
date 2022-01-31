@@ -7,6 +7,10 @@ class siswa extends CI_Controller
         $this->load->model('siswaModel');
         $this->load->library('form_validation');
         $this->load->helper('sistem_helper');
+        // pembatasan administrator dan petugas
+        if ($this->session->userdata('level') == 'petugas') {
+            redirect('petugas');
+        }
     }
     public function index()
     {
@@ -21,7 +25,7 @@ class siswa extends CI_Controller
         $this->form_validation->set_rules('nama_siswa', 'nama siswa', 'required');
         $this->form_validation->set_rules('id_kelas', 'nama kelas', 'required');
         $this->form_validation->set_rules('id_spp', 'spp', 'required');
-        $this->form_validation->set_rules('nisn', 'nisn', 'required|min_length[3]|max_length[3]|is_unique[siswa.nisn]');
+        $this->form_validation->set_rules('nisn', 'nisn', 'required|min_length[10]|max_length[10]|is_unique[siswa.nisn]');
         if ($this->form_validation->run() == false) {
             $data['content'] = 'siswa/tambah';
             $this->load->view('templates/main_view', $data);
@@ -104,7 +108,6 @@ class siswa extends CI_Controller
     {
         $this->form_validation->set_rules('nisn', 'NISN', 'required');
         if ($this->form_validation->run() == false) {
-            # code...
             $this->load->view('siswa/login');
         } else {
             $this->proseslogin();
@@ -132,5 +135,14 @@ class siswa extends CI_Controller
         $nisn               = $this->session->userdata('nisn');
         $data['pembayaran'] = $this->siswaModel->getSppSiswa($nisn);
         $this->load->view('siswa/riwayat_spp', $data);
+    }
+    public function logout()
+    {
+        $this->session->unset_userdata('nisn');
+        $this->session->set_flashdata('pesan', '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+       Logout Sukses !
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>');
+        redirect('siswa/login');
     }
 }

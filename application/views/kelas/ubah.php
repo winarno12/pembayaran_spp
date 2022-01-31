@@ -20,7 +20,7 @@
                 <div class="card-body">
                     <?= form_open('kelas/proses_update') ?>
                     <input type="hidden" id="id_kelas" name="id_kelas" autocomplete="off" value="<?= $kelas['id_kelas']; ?>" class="form-control" />
-                    <input type="text" id="old_kelas" name="old_kelas" autocomplete="off" value="<?= $kelas['nama_kelas']; ?>" class="form-control" />
+                    <input type="hidden" id="old_kelas" name="old_kelas" autocomplete="off" value="<?= $kelas['nama_kelas']; ?>" class="form-control" />
                     <div class="form-outline mb-4">
                         <label class="form-label" for="nama_kelas">Nama Kelas:</label>
                         <input type="text" id="nama_kelas" autocomplete="off" value="<?= $kelas['nama_kelas']; ?>" class="form-control" name="nama_kelas" />

@@ -50,7 +50,7 @@
     <div class="row">
         <div class="text-end">
             <p>Selamat Datang</p>
-            <a href="#" class="">
+            <a href="<?= base_url('siswa/logout'); ?>" class="">
                 <span class="px-3"></span> Log out
             </a>
             </p>

@@ -73,7 +73,7 @@
                                         <td><?= $no++ ?></td>
                                         <td><?= $val['nama']; ?></td>
                                         <td><?= $val['nama_kelas']; ?></td>
-                                        <td><?= $val['bulan_dibayar']; ?>/<?=$val['tahun_dibayar'] ;?></td>
+                                        <td><?=$bulan[$val['bulan_dibayar']] ; ?>/<?=$val['tahun_dibayar'] ;?></td>
                                         <td><?=konversi_uang($val['jumlah_bayar']) ; ?></td>
                                     </tr>
                                 <?php endforeach; ?>
