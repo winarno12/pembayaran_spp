@@ -39,9 +39,6 @@
             <h6 class="page-title h5">
                 Daftar Siswa <small class="text-success h7">Kelola Siswa</small>
             </h6>
-            <?= $this->session->flashdata('pesan');
-            ?>
-
             <div class="card bg-transparent border-info ">
                 <div class="card-header bg-info">
                     <div class="row">
@@ -49,7 +46,7 @@
                             Daftar
                         </div>
                         <div class="col-md-1 float-right">
-                            <a href="<?= base_url('siswa/tambah_siswa'); ?>" class="btn btn-outline-primary">Cetak</a>
+                            <a href="<?= base_url('laporan/cetak'); ?>" target="_blank" class="btn btn-outline-primary">Cetak</a>
                         </div>
                     </div>
                 </div>
@@ -79,7 +76,7 @@
                                             <td><?= $no++ ?></td>
                                             <td><?= $val['nama']; ?></td>
                                             <td><?= $val['nama_kelas']; ?></td>
-                                            <td><?= $val['bulan_dibayar']; ?>/<?= $val['tahun_dibayar']; ?></td>
+                                            <td><?=$bulan[$val['bulan_dibayar']] ; ?>/<?= $val['tahun_dibayar']; ?></td>
                                             <td><?= konversi_uang($val['jumlah_bayar']); ?></td>
                                         </tr>
                                     <?php endforeach; ?>
